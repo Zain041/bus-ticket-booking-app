@@ -23,14 +23,7 @@ router.post(
       .trim()
       .normalizeEmail(),
 
-    check("password", "password is required")
-      .matches(
-        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,}$/,
-        "i"
-      )
-      .withMessage(
-        "Password must include one lowercase character, one uppercase character, a number, and a special character."
-      ),
+   
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -39,7 +32,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { email, password, fullName,phone } = req.body;
+    const { email, password, fullName,phone,cnic } = req.body;
     
     try {
       //check if user exists
@@ -55,7 +48,8 @@ router.post(
         fullName,
         email,
         password,
-        phone
+        phone,
+        cnic
       });
 
       await user.save();
@@ -112,7 +106,8 @@ router.post(
           _id: user._id,
           fullName: user.fullName,
           email: user.email,
-          phone:user.phone
+          phone:user.phone,
+          cnic:user.cnic
         
         },
       };

@@ -2,22 +2,22 @@ const mongoose = require("mongoose")
 var Schema = mongoose.Schema;
 
 
-const userSchema = Schema({
+const refundSchema = Schema({
 
     
     fullName: {
         type: String,
     },
-    email: {
-        type: String,
-        unique: true,
+    noOfSeats: {
+        type: Number,
+     
     },
-    password: {
-        type: String,
+    amount: {
+        type: Number,
     },
     phone: {
         type: Number,
-        unique:true
+       
     },
     cnic:{
         type:Number
@@ -31,5 +31,5 @@ const userSchema = Schema({
         timestamps: true,
     }
 )
-module.exports = mongoose.model("User", userSchema)
+module.exports = mongoose.model("Refund", refundSchema)
 

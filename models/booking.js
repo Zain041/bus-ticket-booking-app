@@ -10,6 +10,9 @@ const bookigSchema = Schema(
     phone: {
       type: Number,
     },
+    cnic:{
+      type:Number
+    },
     totalFair: {
       type: Number,
     },
@@ -27,6 +30,9 @@ const bookigSchema = Schema(
     },
     arrivalName: {
       type: String,
+    },
+    bookingDate:{
+      type:String
     },
     customer_id: {
       type: mongoose.Schema.Types.ObjectId,
